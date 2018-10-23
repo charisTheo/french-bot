@@ -1,0 +1,130 @@
+
+/***************************
+****************************
+        LAYOUT STYLES
+****************************
+***************************/
+*, html ,body {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+html {
+    background-image: -webkit-linear-gradient(180deg, #455a64 20%, #1c313a 80%); 
+    background-image:    -moz-linear-gradient(180deg, #455a64 20%, #1c313a 80%); 
+    background-image:     -ms-linear-gradient(180deg, #455a64 20%, #1c313a 80%); 
+    background-image:      -o-linear-gradient(180deg, #455a64 20%, #1c313a 80%); 
+    background-image:         linear-gradient(180deg, #455a64 20%, #1c313a 80%);
+    height: 100%;
+    width: 100%;
+}
+body {
+    max-width: 100vw;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    font-family: 'Michroma', sans-serif;
+    margin: 0;
+    -webkit-tap-highlight-color: #cafa1d8f;
+}
+main {
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    margin: 0 auto;
+    padding: 10px 0;
+    overflow-x: hidden;
+}
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  flex-direction: column; 
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;  /*when adding left and right padding with the max-width = 1200px,*/
+  max-width: 1170px;  /* which is our large device breakpoint.*/
+}
+.row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.row:after { /*:after & :before are determining the are before and after the specific element*/
+  content: "";
+  clear: both;    /* clear any floated elements inside the .row*/
+  display: table;
+}
+[class*='col-'] { /*targets all classes that start with .col-,*/
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+
+/***************************
+****************************
+        THEME STYLES
+****************************
+***************************/
+/*Color List:
+- light blue = 00AEEF;
+- dark blue = 1C75BC
+- green = 8DC63F
+- dark green = 009444
+- orange = F7941E
+- dark orange = F15A29
+- brown = 594a42; */
+
+.background-primary {
+  background: #F7941E; /*Orange*/
+}
+.background-secondary {
+  background: #00AEEF; /*Blue*/
+}
+.background-tertiary {
+  background: #8DC63F; /*Green*/
+}
+.background-quaternary {
+  background: grey;
+}
+::-moz-selection {
+    background: #fdd8358f;
+    text-shadow: none; }
+  
+  ::selection {
+    background: #fdd8358f;
+    text-shadow: none; }
+  
+  img::selection {
+    background: transparent; }
+  
+  img::-moz-selection {
+    background: transparent; }
+
+
+/***************************
+****************************
+        CUSTOM STYLES
+****************************
+***************************/
+.container #question {
+    text-decoration: none;
+    text-align: center;
+    outline: none;
+    word-spacing: 5px;
+    letter-spacing: 1px;
+    margin: 20px;
+    color: #fdd835;
+}
+.container #question:active,
+.container #question:hover {
+    outline: none;
+    text-decoration: none;
+    color: #ffff6b;
+}
+.container #question:focus {
+    outline: none;
+    text-decoration: none;
+}

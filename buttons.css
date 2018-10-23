@@ -1,0 +1,112 @@
+button,
+button:hover,
+button:active,
+button:focus,
+a,
+a:hover,
+a:active,
+a:focus {
+    outline: none;
+    text-decoration: none;
+}
+.btn {
+    font-family: Lato,Helvetica,Arial,sans-serif;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 900;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+.btn-3d {
+    position: relative;
+    background-color: #fdd835;
+    color: #1c313a;
+    outline: none;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: rotateX(15deg);
+    -moz-transform: rotateX(15deg);
+    -ms-transform: rotateX(15deg);
+    -o-transform: rotateX(15deg);
+    transform: rotateX(15deg);
+}
+.btn-3d::after {
+    -webkit-transition: all 0.35s;
+    -moz-transition: all 0.35s;
+    -ms-transition: all 0.35s;
+    -o-transition: all 0.35s;
+    transition: all 0.35s;
+    position: absolute;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    z-index: -1;
+    content: "";
+    width: 99%;
+    height: 60%;
+    left: 0;
+    top: 100%;
+    -webkit-transform: rotateX(-90deg);
+    -moz-transform: rotateX(-90deg);
+    -ms-transform: rotateX(-90deg);
+    -o-transform: rotateX(-90deg);
+    transform: rotateX(-90deg);
+    transform-origin: 0% 0%;
+    -ms-transform-origin: 0% 0%;
+    -moz-transform-origin: 0% 0%;
+    -webkit-transform-origin: 0% 0%;
+}
+.btn-3d:active {
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    -ms-transform: rotateX(0deg);
+    -o-transform: rotateX(0deg);
+    transform: rotateX(0deg); 
+}
+.btn-3d:hover, .btn-3d:focus {
+    outline: none !important;
+    outline-style: none;        
+}
+.btn-3d:blur {
+    outline: none;
+    outline-style: none;
+}
+.btn-3d-primary::after {
+    /* darker */
+    border: 1px solid #c6a700;
+}
+.btn-3d-primary::after {
+    /* darker */
+    background-color: #c6a700;
+    color: #455a64;
+}
+.btn-3d-primary:active, .btn-3d-primary:hover {
+    /* lighter */
+    background-color: #ffff6b; 
+    color: #455a64;
+}
+.perspective {
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    -ms-perspective: 800px;
+    -o-perspective: 800px;
+    perspective: 800px;
+    display: inline-block;
+}
