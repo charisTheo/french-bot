@@ -109,7 +109,8 @@ main {
         CUSTOM STYLES
 ****************************
 ***************************/
-.container #question {
+.container #question,
+.container #answer {
     text-decoration: none;
     text-align: center;
     outline: none;
@@ -127,4 +128,10 @@ main {
 .container #question:focus {
     outline: none;
     text-decoration: none;
+}
+.container #answer {
+    opacity: 0;
+}
+.container #question:hover + #answer {
+    opacity: 0.7;
 }

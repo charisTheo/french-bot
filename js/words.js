@@ -2,7 +2,7 @@
 //  é 				 è 				 à
 let words = [
 	{
-	  "q": "O�",
+	  "q": "O&amp;ugrave;",
 	  "a": "Where"
 	},
 	{
@@ -114,7 +114,7 @@ let words = [
 	  "a": "too much"
 	},
 	{
-	  "q": "peut-�tre",
+	  "q": "peut-&amp;ecirc;tre",
 	  "a": "maybe"
 	},
 	{
@@ -150,7 +150,7 @@ let words = [
 	  "a": "opposite"
 	},
 	{
-	  "q": "&agrave; c�t� de",
+	  "q": "&agrave; c&amp;ocirc;t&amp;eacute; de",
 	  "a": "next to"
 	},
 	{
@@ -198,7 +198,7 @@ let words = [
 	  "a": "regularly"
 	},
 	{
-	  "q": "plut�t",
+	  "q": "plut&amp;ocirc;t",
 	  "a": "rather"
 	},
 	{
@@ -210,7 +210,7 @@ let words = [
 	  "a": "since"
 	},
 	{
-	  "q": "pr�s",
+	  "q": "pr&amp;egrave;s",
 	  "a": "near"
 	},
 	{
