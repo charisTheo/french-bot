@@ -3,14 +3,19 @@
 let question = document.getElementById('question');
 let answerInput = document.getElementById('answer');
 let results = document.getElementById('results');
+let inputForm = document.getElementById('inputForm');
+let retryButton = document.getElementById('retryButton');
+let countElement = document.getElementById('count');
+
+const NUMBER_OF_TRIES = 10;
 const KEY = 'trnsl.1.1.20181105T164937Z.ee522e94c8af9c25.2938b6eb1e9eecf9fcd356cb37a55bcb85964cbd';
-let i;
 let correctCount = 0;
 let count = 0;
 let incorrectWords = [];
 let dataset = [];
 
-document.getElementById('inputForm').addEventListener('submit', submit);
+inputForm.addEventListener('submit', submit);
+retryButton.addEventListener('click', init);
 
 (function() {
     // load words from csv files
@@ -24,11 +29,27 @@ document.getElementById('inputForm').addEventListener('submit', submit);
         data.forEach(entry=>{
             dataset.push(entry["language:"]);
         });
-        // render the next word
-        nextWord();
+        
+        init();
     });
 })();
 
+function init() {
+    count = 0;
+    incorrectWords = [];
+    // show results
+    results.classList.remove('show');
+    // hide input form
+    inputForm.style.display = 'block';
+    // show retry button
+    retryButton.style.display = 'none';
+    // make sure wrong answers are shown if user has answered all correct before    
+    //TODO:
+    // document.getElementById('results-container').style.visibility = 'visible';
+    // set the number of tries
+    countElement.textContent = NUMBER_OF_TRIES.toString();
+    nextWord();
+}
 
 async function submit(e) {
     if (e) e.preventDefault();
@@ -49,15 +70,28 @@ async function submit(e) {
         showToast(false);
     }
     count++;
-    if (count > 5) {
+    countElement.textContent = NUMBER_OF_TRIES - count;
+
+    if (count >= NUMBER_OF_TRIES) {
         // end game and show results
-        document.getElementById('answersCorrect').textContent = (correctCount > 0 ? correctCount.toString() + ' correct!' : 'No correct answers :/ Try harder');
         let wrongAnswers = "";
-        incorrectWords.forEach(function(wrong) {
-            wrongAnswers += `<li><span class='red'>${wrong.question}</span> <i class="fa fa-arrow-right"></i> <span class='green'>${wrong.answer}</span></li>`;
-        });
-        document.getElementById('answersWrong').innerHTML = `<span class='red'>${incorrectWords.length} wrong</span><ul>` + wrongAnswers + '</ul>';
+        
+        if (incorrectWords.length) {
+            incorrectWords.forEach(function(wrong) {
+                wrongAnswers += `<li><span class='red'>${wrong.question}</span> <i class="fa fa-arrow-right"></i> <span class='green'>${wrong.answer}</span></li>`;
+            });
+            document.getElementById('answersCorrect').textContent = (correctCount > 0 ? correctCount.toString() + ' correct!' : 'No correct answers :/ Try harder');            
+            document.getElementById('answersWrong').innerHTML = `<span class='red'>${incorrectWords.length} wrong</span><ul>` + wrongAnswers + '</ul>';
+        } else {
+            document.getElementById('answersCorrect').innerHTML = 'Ohh la la! Sans erreur, bien fait!';
+            // document.getElementById('results-container').style.visibility = 'hidden';
+        }
+        // show results
         results.classList.add('show');
+        // hide input form
+        inputForm.style.display = 'none';
+        // show retry button
+        retryButton.style.display = 'block';
     } else {
         nextWord();
     }

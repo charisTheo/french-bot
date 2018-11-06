@@ -78,7 +78,7 @@ main {
 - brown = 594a42; */
 
 .red {
-  color: red;
+  color: #d50000;
 }
 .green {
   color: #8DC63F
@@ -116,7 +116,17 @@ main {
         CUSTOM STYLES
 ****************************
 ***************************/
-
+span#count {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 20px 10px;
+  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.7);
+  background-color: white;
+  color: #1c313a;
+  font-size: 2em;
+  border-radius: 4px;
+}
 form#inputForm button {
   display: block;
   margin: 10px auto;
@@ -145,6 +155,10 @@ form#inputForm button {
   font-size: 1.5em;
 }
 
+button#retryButton {
+  display: none;
+}
+
 div#correct,
 div#wrong {
   transition: all 0.5s;
@@ -163,7 +177,7 @@ div#correct {
   background-color: #8DC63F;
 }
 div#wrong {
-  background-color: red;
+  background-color: #d50000;
 }
 div#wrong.active,
 div#correct.active {
@@ -171,7 +185,6 @@ div#correct.active {
   opacity: 1;
   bottom: 30vh;
 }
-
 div#results {
   transition: all 0.5s;
   border-radius: 4px;
