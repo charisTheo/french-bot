@@ -13,16 +13,32 @@
 <body>
   <div class="container">
     <h2 id="question"></h2>
-    <h3 id="answer"></h3>
+    <input 
+      type="text" 
+      name="answer" 
+      id="answer" 
+      placeholder="Type your answer here"
+      onfocus="this.placeholder = ''"
+      onblur="this.placeholder = 'Type your answer here'"
+    >
 
     <button class="btn btn-3d btn-3d-primary" id="next-btn">Next</button>
+  </div>
+
+
+  <div id="correct">
+    <h3>Correct</h3>
+  </div>
+
+  <div id="wrong">
+    <h3>Wrong</h3>
   </div>
 
   <!-- import node modules -->
   <script src="./js/d3.js"></script>
   
+  <!-- <script src="./js/translate.js"></script> -->
   <script src="./js/index.js"></script>
-  <script src="./js/translate.js"></script>
   <!-- <script src="/node_modules/d3/dist/d3.js"></script> -->
   <!-- <script src="./js/voice-recognition.js"></script> -->
 </body>

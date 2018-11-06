@@ -124,14 +124,36 @@ main {
     outline: none;
     text-decoration: none;
     color: #ffff6b;
-}
-.container #question:focus {
-    outline: none;
-    text-decoration: none;
+    border: none;
 }
 .container #answer {
-    opacity: 0;
+  background-color: transparent;
+  font-weight: bolder;
+  border: none;
+  font-size: 1.5em;
 }
-.container #question:hover + #answer {
-    opacity: 0.7;
+
+div#correct,
+div#wrong {
+  transition: all 0.5s;
+  position: absolute;
+  width: 30vw;
+  left: 50%;
+  margin-left: -15vw;
+  padding: 10px 20px;
+  opacity: 0;
+  bottom: 0;
+  text-align: center;
+}
+div#correct {
+  background-color: #8DC63F;
+}
+div#wrong {
+  background-color: red;
+}
+div#wrong.active,
+div#correct.active {
+  transition: all 0.5s;
+  opacity: 1;
+  bottom: 30vh;
 }
