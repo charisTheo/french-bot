@@ -3,17 +3,32 @@
 let nextBtn = document.getElementById('next-btn');
 let question = document.getElementById('question');
 let answerInput = document.getElementById('answer');
+let results = document.getElementById('results');
 const KEY = 'trnsl.1.1.20181105T164937Z.ee522e94c8af9c25.2938b6eb1e9eecf9fcd356cb37a55bcb85964cbd';
 let i;
 let correctCount = 0;
+let count = 0;
 let incorrectWords = [];
+let dataset = [];
 
 nextBtn.addEventListener("click", submit);
 
 (function() {
-    nextWord();
+    // load words from csv files
+    Promise.all([
+        // "/../french-words/french-word-list-adjectives.csv",
+        "/../french-words/french-word-list-nouns.csv",
+        "/../french-words/french-word-list-verbs.csv",
+    ].map(url => d3.csv(url))).then(function(values) {
+        let data = values[0];
+        // filter
+        data.forEach(entry=>{
+            dataset.push(entry["language:"]);
+        });
+        // render the next word
+        nextWord();
+    });
 })();
-
 
 
 async function submit() {
@@ -33,7 +48,19 @@ async function submit() {
         });
         showToast(false);
     }
-    nextWord();
+    count++;
+    if (count > 5) {
+        // end game and show results
+        document.getElementById('answersCorrect').textContent = 'Correct: ' + (correctCount > 0 ? correctCount.toString() : 'No correct answers :/ Try harder');
+        let wrongAnswers = "";
+        incorrectWords.forEach(function(wrong) {
+            wrongAnswers += `<li><span class='red'>${wrong.question}</span> <i class="fa fa-arrow-right"></i> <span class='green'>${wrong.answer}</span></li>`;
+        });
+        document.getElementById('answersWrong').innerHTML = "<span class='red'>Wrong: </span><ul>" + wrongAnswers + '</ul>';
+        results.classList.add('show');
+    } else {
+        nextWord();
+    }
 }
 
 function getTranslation(word) {
@@ -62,8 +89,7 @@ function isCorrect(translated) {
 function nextWord() {
     // clear user input 
     answerInput.value = "";
-    i = Math.floor(Math.random() * words.length - 1);
-    question.innerHTML = words[i].q;
+    question.innerHTML = dataset[Math.floor(Math.random() * dataset.length - 1)];
     fadeIn(question);
 }
 
@@ -81,24 +107,5 @@ function showToast(correct) {
         toast.classList.remove('active');
     }, 1500);    
 }
-
-//TODO: load this dataset
-
-// let dataset = [];
-// Promise.all([
-//         // "/../french-words/french-word-list-adjectives.csv",
-//         "/../french-words/french-word-list-nouns.csv",
-//         "/../french-words/french-word-list-verbs.csv",
-//     ].map(url => d3.csv(url))).then(function(values) {
-//     let data = values[0];
-
-//     data.forEach(entry=>{
-//         dataset.push(entry["language:"]);
-//     })
-
-//     // dataset.sort((a,b)=> a>b ? 1 : a<b ? -1 : 0);
-//     // console.log(dataset);
-// });
-
 
 

@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <head>
-  <link rel="stylesheet" href="./buttons.css">
-  <link rel="stylesheet" href="./scrollBar.css">
-  <link rel="stylesheet" href="./styles.css">
-  <link rel="stylesheet" href="./media.css">
+  <link rel="stylesheet" href="./styles/buttons.css">
+  <link rel="stylesheet" href="./styles/scrollBar.css">
+  <link rel="stylesheet" href="./styles/styles.css">
+  <link rel="stylesheet" href="./styles/media.css">
   
-  <script src="./js/words.js"></script>
   <script src="./js/fade.js"></script>
   
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 
 <body>
   <div class="container">
+    <div id="results">
+      <h2 id="answersCorrect" class="green"></h2>
+      <h2 id="answersWrong"></h2>
+    </div>
+
     <h2 id="question"></h2>
     <input 
       type="text" 

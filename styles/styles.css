@@ -77,6 +77,13 @@ main {
 - dark orange = F15A29
 - brown = 594a42; */
 
+.red {
+  color: red;
+}
+.green {
+  color: #8DC63F
+}
+
 .background-primary {
   background: #F7941E; /*Orange*/
 }
@@ -144,6 +151,7 @@ div#wrong {
   opacity: 0;
   bottom: 0;
   text-align: center;
+  border-radius: 4px;
 }
 div#correct {
   background-color: #8DC63F;
@@ -156,4 +164,23 @@ div#correct.active {
   transition: all 0.5s;
   opacity: 1;
   bottom: 30vh;
+}
+
+div#results {
+  transition: all 0.5s;
+  border-radius: 4px;
+  opacity: 0;
+  padding: 10px 20px;
+}
+div#results.show {
+  opacity: 1;
+}
+
+#results #answersWrong ul li {
+  display: flex;
+  justify-content: space-around;
+}
+#results #answersWrong ul li span {
+  width: 35%;
+  text-align: center;
 }
