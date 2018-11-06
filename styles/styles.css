@@ -116,6 +116,11 @@ main {
         CUSTOM STYLES
 ****************************
 ***************************/
+
+form#inputForm button {
+  display: block;
+  margin: 10px auto;
+}
 .container #question,
 .container #answer {
     text-decoration: none;
@@ -152,6 +157,7 @@ div#wrong {
   bottom: 0;
   text-align: center;
   border-radius: 4px;
+  box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.6);
 }
 div#correct {
   background-color: #8DC63F;
@@ -171,11 +177,18 @@ div#results {
   border-radius: 4px;
   opacity: 0;
   padding: 10px 20px;
+  width: 75%;
 }
 div#results.show {
   opacity: 1;
 }
-
+.results-container {
+  background-color: white;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin: 15px 0;
+  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.7);
+}
 #results #answersWrong ul li {
   display: flex;
   justify-content: space-around;

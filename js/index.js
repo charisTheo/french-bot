@@ -1,6 +1,5 @@
 'use strict';
 
-let nextBtn = document.getElementById('next-btn');
 let question = document.getElementById('question');
 let answerInput = document.getElementById('answer');
 let results = document.getElementById('results');
@@ -11,7 +10,7 @@ let count = 0;
 let incorrectWords = [];
 let dataset = [];
 
-nextBtn.addEventListener("click", submit);
+document.getElementById('inputForm').addEventListener('submit', submit);
 
 (function() {
     // load words from csv files
@@ -31,7 +30,8 @@ nextBtn.addEventListener("click", submit);
 })();
 
 
-async function submit() {
+async function submit(e) {
+    if (e) e.preventDefault();
     const word = question.innerHTML.toLowerCase();    // question
     const translation = await getTranslation(word);   // answer
     let correct = isCorrect(translation);   // check if the answer is correct
@@ -51,12 +51,12 @@ async function submit() {
     count++;
     if (count > 5) {
         // end game and show results
-        document.getElementById('answersCorrect').textContent = 'Correct: ' + (correctCount > 0 ? correctCount.toString() : 'No correct answers :/ Try harder');
+        document.getElementById('answersCorrect').textContent = (correctCount > 0 ? correctCount.toString() + ' correct!' : 'No correct answers :/ Try harder');
         let wrongAnswers = "";
         incorrectWords.forEach(function(wrong) {
             wrongAnswers += `<li><span class='red'>${wrong.question}</span> <i class="fa fa-arrow-right"></i> <span class='green'>${wrong.answer}</span></li>`;
         });
-        document.getElementById('answersWrong').innerHTML = "<span class='red'>Wrong: </span><ul>" + wrongAnswers + '</ul>';
+        document.getElementById('answersWrong').innerHTML = `<span class='red'>${incorrectWords.length} wrong</span><ul>` + wrongAnswers + '</ul>';
         results.classList.add('show');
     } else {
         nextWord();
