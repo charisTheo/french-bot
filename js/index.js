@@ -21,9 +21,9 @@ retryButton.addEventListener('click', init);
 (function() {
     // load words from csv files
     Promise.all([
-        "/../french-words/french-word-list-adjectives.csv",
+        // "/../french-words/french-word-list-adjectives.csv",
         "/../french-words/french-word-list-nouns.csv",
-        "/../french-words/french-word-list-verbs.csv"
+        "/../french-words/french-word-list-verbs.csv",
     ].map(url => d3.csv(url))).then(function(values) {
         let data = values[0];
         // filter
