@@ -61,6 +61,62 @@ main {
   padding-left: 15px;
   padding-right: 15px;
 }
+#page-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background-color: #fdd835; 
+}
+#page-loader::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;  
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-image: -webkit-linear-gradient(120deg, #f50057aa 15%, #fdd835 60%);
+  background-image:    -moz-linear-gradient(120deg, #f50057aa 15%, #fdd835 60%);
+  background-image:     -ms-linear-gradient(120deg, #f50057aa 15%, #fdd835 60%);
+  background-image:      -o-linear-gradient(120deg, #f50057aa 15%, #fdd835 60%);
+  background-image:         linear-gradient(120deg, #f50057aa 15%, #fdd835 60%);
+}
+#page-loader.hide::after {
+  content: none;
+}
+#page-loader svg {
+  position: fixed; 
+  width: 50%;
+  margin: auto;
+  display: inherit;
+  top: 30vh;
+  left: 0;
+  z-index: 1000;
+  right: 0;
+  -webkit-animation: loading 1s infinite;
+  -moz-animation: loading 1s infinite;
+  -ms-animation: loading 1s infinite;
+  -o-animation: loading 1s infinite;
+  animation: loading 1s infinite;
+}
+@-webkit-keyframes loading  {
+  50% { transform: scale(0.7) }
+}
+@-moz-keyframes loading {
+  50% { transform: scale(0.7) }
+}
+@-ms-keyframes loading {
+  50% { transform: scale(0.7) }
+}
+@-o-keyframes loading {
+  50% { transform: scale(0.7) }
+}
+@keyframes loading {
+  50% { transform: scale(0.7) }
+}
 #logo {
   transition: all 0.35s;
   border: none;
@@ -179,6 +235,7 @@ span#count:hover + span#count-hint {
 }
 form#inputForm {
   position: relative;
+  width: 100%;
 }
 form#inputForm button {
   display: block;
@@ -191,8 +248,9 @@ form#inputForm button {
     outline: none;
     word-spacing: 5px;
     letter-spacing: 1px;
-    margin: 20px;
+    margin: 20px 0;
     color: #fdd835;
+    width: 100%;
 }
 .container #question:active,
 .container #question:hover {
@@ -271,4 +329,12 @@ div#results.show {
 #results #answersWrong ul li span {
   width: 35%;
   text-align: center;
+}
+
+
+.hide {
+  transition: transform 0.35s;
+  transform: scale(0);
+  transform-origin: 50% 50%;
+  border-radius: 50%;
 }
