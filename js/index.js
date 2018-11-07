@@ -85,10 +85,10 @@ async function submit(e) {
             incorrectWords.forEach(function(wrong) {
                 wrongAnswers += `<li><span class='red'>${wrong.question}</span> <i class="fa fa-arrow-right"></i> <span class='green'>${wrong.answer}</span></li>`;
             });
-            document.getElementById('answersCorrect').textContent = (correctCount > 0 ? correctCount.toString() + ' correct!' : 'No correct answers :/ Try harder');            
+            document.getElementById('answersCorrect').textContent = (correctCount > 0 ? correctCount.toString() + ' correct!' : 'No correct answers 😕 Try harder 💪');            
             document.getElementById('answersWrong').innerHTML = `<span class='red'>${incorrectWords.length} wrong</span><ul>` + wrongAnswers + '</ul>';
         } else {
-            document.getElementById('answersCorrect').innerHTML = 'Ohh la la! Sans erreur, bien fait!';
+            document.getElementById('answersCorrect').innerHTML = '🤘 Ohh la la! 🤘 Sans erreur, bien fait!';
             document.querySelector('#results .wrong-answers-container').style.visibility = 'hidden';
         }
         // show results
