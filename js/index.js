@@ -34,10 +34,14 @@ retryButton.addEventListener('click', init);
         init();
     }).catch(function(error) {
         // website is being hosted
+
         Promise.all([
-            "https://github.com/charisTheo/french-bot/blob/2bb3fd1b23e07652a8b447c32b539f6f6c8c895f/french-words/french-word-list-adjectives.csv",
-            "https://github.com/charisTheo/french-bot/blob/2bb3fd1b23e07652a8b447c32b539f6f6c8c895f/french-words/french-word-list-nouns.csv",
-            "https://github.com/charisTheo/french-bot/blob/2bb3fd1b23e07652a8b447c32b539f6f6c8c895f/french-words/french-word-list-verbs.csv"
+            "https://raw.githubusercontent.com/charisTheo/french-bot/2bb3fd1b23e07652a8b447c32b539f6f6c8c895f/french-words/french-word-list-adjectives.csv",
+            "https://raw.githubusercontent.com/charisTheo/french-bot/2bb3fd1b23e07652a8b447c32b539f6f6c8c895f/french-words/french-word-list-nouns.csv",
+            "https://raw.githubusercontent.com/charisTheo/french-bot/2bb3fd1b23e07652a8b447c32b539f6f6c8c895f/french-words/french-word-list-verbs.csv"
+            // "https://github.com/charisTheo/french-bot/blob/2bb3fd1b23e07652a8b447c32b539f6f6c8c895f/french-words/french-word-list-adjectives.csv",
+            // "https://github.com/charisTheo/french-bot/blob/2bb3fd1b23e07652a8b447c32b539f6f6c8c895f/french-words/french-word-list-nouns.csv",
+            // "https://github.com/charisTheo/french-bot/blob/2bb3fd1b23e07652a8b447c32b539f6f6c8c895f/french-words/french-word-list-verbs.csv"
         ].map(url => d3.csv(url))).then(function(values) {
             let data = values[0];
             // filter
