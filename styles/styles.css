@@ -61,6 +61,36 @@ main {
   padding-left: 15px;
   padding-right: 15px;
 }
+#logo {
+  transition: all 0.35s;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0px 4px 0px rgba(0,0,0,0.7);
+}
+#logo span {
+  font-size: 1.5em;
+}
+#logo span.red {
+  margin-right: -2px;
+}
+#logo:hover, 
+#logo:focus, 
+#logo:active {
+  border: none;
+  outline: none;
+  text-shadow: none;
+}
+#logo:hover span.red,
+#logo:focus span.red,
+#logo:active span.red {
+  color: #ca0512;
+}
 
 
 /***************************
@@ -117,7 +147,7 @@ main {
 ****************************
 ***************************/
 .hint {
-  transition: all 0.5s;
+  transition: all 0.35s;
   position: absolute;
   padding: 20px 10px;
   box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.7);
@@ -192,7 +222,7 @@ button#retryButton {
 
 div#correct,
 div#wrong {
-  transition: all 0.5s;
+  transition: all 0.35s;
   position: absolute;
   width: 30vw;
   left: 50%;
@@ -212,12 +242,12 @@ div#wrong {
 }
 div#wrong.active,
 div#correct.active {
-  transition: all 0.5s;
+  transition: all 0.35s;
   opacity: 1;
   top: 30vh;
 }
 div#results {
-  transition: all 0.5s;
+  transition: all 0.35s;
   border-radius: 4px;
   opacity: 0;
   padding: 10px 20px;
