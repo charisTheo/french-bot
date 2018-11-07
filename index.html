@@ -12,12 +12,13 @@
 
 <body>
   <div class="container">
-    <span id="count"></span>
+    <span aria-describedby="count-hint" id="count"></span>
+    <span id="count-hint" class="hint">words remaining</span>
     <div id="results">
       <div class="results-container">
         <h2 id="answersCorrect" class="green"></h2>
       </div>
-      <div class="results-container">
+      <div class="results-container wrong-answers-container">
         <h2 id="answersWrong"></h2>
       </div>
     </div>
@@ -25,6 +26,7 @@
     
     <form id="inputForm">
       <h2 id="question"></h2>
+      <span id="question-hint" class="hint">translate this word in english</span>
       <input 
         type="text" 
         name="answer" 
@@ -36,8 +38,9 @@
       >  
       <button 
         class="btn btn-3d btn-3d-primary" 
-        id="next-btn"
         type="submit"
+        name="submit"
+        id="form-submit-button"
         form="inputForm"
       >Next</button>
     </form>
@@ -65,4 +68,8 @@
   <script src="./js/index.js"></script>
   <!-- <script src="/node_modules/d3/dist/d3.js"></script> -->
   <!-- <script src="./js/voice-recognition.js"></script> -->
+
+  <script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.3'><\/script>".replace("HOST", location.hostname));
+//]]></script>
 </body>

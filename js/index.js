@@ -4,10 +4,11 @@ let question = document.getElementById('question');
 let answerInput = document.getElementById('answer');
 let results = document.getElementById('results');
 let inputForm = document.getElementById('inputForm');
+let formSubmitButton = document.getElementById('form-submit-button');
 let retryButton = document.getElementById('retryButton');
 let countElement = document.getElementById('count');
 
-const NUMBER_OF_TRIES = 10;
+const NUMBER_OF_TRIES = 20;
 const KEY = 'trnsl.1.1.20181105T164937Z.ee522e94c8af9c25.2938b6eb1e9eecf9fcd356cb37a55bcb85964cbd';
 let correctCount = 0;
 let count = 0;
@@ -44,15 +45,19 @@ function init() {
     // show retry button
     retryButton.style.display = 'none';
     // make sure wrong answers are shown if user has answered all correct before    
-    //TODO:
-    // document.getElementById('results-container').style.visibility = 'visible';
+    document.querySelector('#results .wrong-answers-container').style.visibility = 'visible';
     // set the number of tries
     countElement.textContent = NUMBER_OF_TRIES.toString();
     nextWord();
 }
 
 async function submit(e) {
-    if (e) e.preventDefault();
+    if (e) {
+        e.preventDefault();
+        formSubmitButton.disabled = true;   // fix for form submitting multiple times on Enter press
+    }
+    formSubmitButton.textContent = 'checking...';
+
     const word = question.innerHTML.toLowerCase();    // question
     const translation = await getTranslation(word);   // answer
     let correct = isCorrect(translation);   // check if the answer is correct
@@ -84,7 +89,7 @@ async function submit(e) {
             document.getElementById('answersWrong').innerHTML = `<span class='red'>${incorrectWords.length} wrong</span><ul>` + wrongAnswers + '</ul>';
         } else {
             document.getElementById('answersCorrect').innerHTML = 'Ohh la la! Sans erreur, bien fait!';
-            // document.getElementById('results-container').style.visibility = 'hidden';
+            document.querySelector('#results .wrong-answers-container').style.visibility = 'hidden';
         }
         // show results
         results.classList.add('show');
@@ -95,6 +100,8 @@ async function submit(e) {
     } else {
         nextWord();
     }
+    formSubmitButton.disabled = false;   // fix for form submitting multiple times on Enter press
+    formSubmitButton.textContent = 'next';
 }
 
 function getTranslation(word) {

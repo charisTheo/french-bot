@@ -116,16 +116,39 @@ main {
         CUSTOM STYLES
 ****************************
 ***************************/
-span#count {
+.hint {
+  transition: all 0.5s;
   position: absolute;
-  top: 20px;
-  right: 20px;
   padding: 20px 10px;
   box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.7);
+  border-radius: 4px;
+  background-color: #fdd835;
+  color: #1c313a;
+  font-size: 1.5em;
+  opacity: 0;
+}
+span#count {
+  position: absolute;
+  padding: 20px 10px;
+  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.7);
+  border-radius: 4px;
+}
+span#count {
+  top: 20px;
+  right: 20px;
   background-color: white;
   color: #1c313a;
   font-size: 2em;
-  border-radius: 4px;
+}
+span#count-hint {
+  top: 85px;
+  right: 70px;
+}
+span#count:hover + span#count-hint {
+  opacity: 1;
+}
+form#inputForm {
+  position: relative;
 }
 form#inputForm button {
   display: block;
@@ -148,6 +171,14 @@ form#inputForm button {
     color: #ffff6b;
     border: none;
 }
+#question-hint {
+  top: -80px;
+  width: 100%;
+  text-align: center;
+}
+.container #question:hover + #question-hint {
+  opacity: 1;
+}
 .container #answer {
   background-color: transparent;
   font-weight: bolder;
@@ -168,7 +199,7 @@ div#wrong {
   margin-left: -15vw;
   padding: 10px 20px;
   opacity: 0;
-  bottom: 0;
+  top: 0;
   text-align: center;
   border-radius: 4px;
   box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.6);
@@ -183,14 +214,15 @@ div#wrong.active,
 div#correct.active {
   transition: all 0.5s;
   opacity: 1;
-  bottom: 30vh;
+  top: 30vh;
 }
 div#results {
   transition: all 0.5s;
   border-radius: 4px;
   opacity: 0;
   padding: 10px 20px;
-  width: 75%;
+  width: 95%;
+  max-width: 700px;
 }
 div#results.show {
   opacity: 1;
