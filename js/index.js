@@ -8,6 +8,8 @@ let inputForm = document.getElementById('inputForm');
 let formSubmitButton = document.getElementById('form-submit-button');
 let retryButton = document.getElementById('retryButton');
 let countElement = document.getElementById('count');
+let answersCorrect = document.getElementById('answersCorrect');
+let answersWrong = document.getElementById('answersWrong');
 
 const NUMBER_OF_TRIES = 20;
 const KEY = 'trnsl.1.1.20181105T164937Z.ee522e94c8af9c25.2938b6eb1e9eecf9fcd356cb37a55bcb85964cbd';
@@ -57,7 +59,9 @@ function init() {
     pageLoader.classList.add('hide');
     count = 0;
     incorrectWords = [];
-    // show results
+    // remove and hide results
+    answersCorrect.innerHTML = "";
+    answersWrong.innerHTML = "";
     results.classList.remove('show');
     // hide input form
     inputForm.style.display = 'block';
@@ -104,10 +108,10 @@ async function submit(e) {
             incorrectWords.forEach(function(wrong) {
                 wrongAnswers += `<li><span class='red'>${wrong.question}</span> <i class="fa fa-arrow-right"></i> <span class='green'>${wrong.answer}</span></li>`;
             });
-            document.getElementById('answersCorrect').textContent = (correctCount > 0 ? correctCount.toString() + ' correct!' : 'No correct answers 😕 Try harder 💪');            
-            document.getElementById('answersWrong').innerHTML = `<span class='wrongAnswersNum'>${incorrectWords.length} wrong</span><ul>` + wrongAnswers + '</ul>';
+            answersCorrect.textContent = (correctCount > 0 ? correctCount.toString() + ' correct!' : 'No correct answers 😕 Try harder 💪');            
+            answersWrong.innerHTML = `<span class='wrongAnswersNum'>${incorrectWords.length} wrong</span><ul>` + wrongAnswers + '</ul>';
         } else {
-            document.getElementById('answersCorrect').innerHTML = '🤘 Ohh la la! 🤘 Sans erreur, bien fait!';
+            answersCorrect.innerHTML = '🤘 Ohh la la! 🤘 Sans erreur, bien fait!';
             document.querySelector('#results .wrong-answers-container').style.visibility = 'hidden';
         }
         // show results
