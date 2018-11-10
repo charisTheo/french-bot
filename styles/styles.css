@@ -43,6 +43,7 @@ footer {
   left: 0;
   width:100%;
   margin-top: 50px;
+  text-align: center;
 }
 .container {
   min-height: 100%;
@@ -133,6 +134,7 @@ footer {
 }
 #logo {
   transition: all 0.35s;
+  margin-top: 10px;
   text-align: center;
   width: 100%;
   display: block;
