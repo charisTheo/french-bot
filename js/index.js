@@ -20,6 +20,7 @@ let dataset = [];
 
 inputForm.addEventListener('submit', submit);
 retryButton.addEventListener('click', init);
+document.getElementById('show-results-button').addEventListener('click', endGame);
 
 (function() {
     // load words from csv files
@@ -102,24 +103,7 @@ async function submit(e) {
 
     if (count >= NUMBER_OF_TRIES) {
         // end game and show results
-        let wrongAnswers = "";
-        
-        if (incorrectWords.length) {
-            incorrectWords.forEach(function(wrong) {
-                wrongAnswers += `<li><span class='red'>${wrong.question}</span> <i class="fa fa-arrow-right"></i> <span class='green'>${wrong.answer}</span></li>`;
-            });
-            answersCorrect.textContent = (correctCount > 0 ? correctCount.toString() + ' correct!' : 'No correct answers 😕 Try harder 💪');            
-            answersWrong.innerHTML = `<span class='wrongAnswersNum'>${incorrectWords.length} wrong</span><ul>` + wrongAnswers + '</ul>';
-        } else {
-            answersCorrect.innerHTML = '🤘 Ohh la la! 🤘 Sans erreur, bien fait!';
-            document.querySelector('#results .wrong-answers-container').style.visibility = 'hidden';
-        }
-        // show results
-        results.classList.add('show');
-        // hide input form
-        inputForm.style.display = 'none';
-        // show retry button
-        retryButton.style.display = 'block';
+        endGame();
     } else {
         nextWord();
     }
@@ -128,7 +112,7 @@ async function submit(e) {
 }
 
 function getTranslation(word) {
-    const URL = `https://translate.yandex.net/api/v1.5/tr.json/translate?key=${KEY}&text=${word}&lang=fr-en`;
+    const URL = `https://translate.yandex.net/api/v1.5/tr.json/translate?key=${KEY}&text=${encodeURIComponent(word)}&lang=fr-en`;
     return fetch(URL).then(function(response) {
         return response.json().then(function(data) {
             if (data.code == 200) {
@@ -172,4 +156,23 @@ function showToast(correct) {
     }, 1500);    
 }
 
-
+function endGame() {
+    let wrongAnswers = "";
+        
+    if (incorrectWords.length) {
+        incorrectWords.forEach(function(wrong) {
+            wrongAnswers += `<li><span class='red'>${wrong.question}</span> <i class="fa fa-arrow-right"></i> <span class='green'>${wrong.answer}</span></li>`;
+        });
+        answersCorrect.textContent = (correctCount > 0 ? correctCount.toString() + ' correct!' : 'No correct answers 😕 Try harder 💪');            
+        answersWrong.innerHTML = `<span class='wrongAnswersNum'>${incorrectWords.length} wrong</span><ul>` + wrongAnswers + '</ul>';
+    } else {
+        answersCorrect.innerHTML = '🤘 Ohh la la! 🤘 Sans erreur, bien fait!';
+        document.querySelector('#results .wrong-answers-container').style.visibility = 'hidden';
+    }
+    // show results
+    results.classList.add('show');
+    // hide input form
+    inputForm.style.display = 'none';
+    // show retry button
+    retryButton.style.display = 'block';
+}
